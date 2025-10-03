@@ -36,6 +36,17 @@ const EditUser = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
 
+    // 유효성 검사 기능 추가
+    if (user.email && !user.email.includes('@')) {
+      alert("유효한 이메일 주소를 입력해주세요.");
+      return;
+    }
+
+    if (new Date(user.birthdate) > new Date()) {
+      alert("출생일은 미래 날짜일 수 없습니다.");
+      return;
+    }
+
     fetch(getUserApi.concat("/") + id, {
       method: "PUT",
       headers: {

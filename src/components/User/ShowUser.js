@@ -12,7 +12,16 @@ const ShowUser = () => {
 
   const handelDelete = async (id) => {
     console.log("id : -", id);
+    // 5번: 삭제 확인 Alert 추가
+    const isConfirmed = window.confirm("정말로 이 사용자를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.");
+
+    // 취소 누르면 함수 실행 중단
+    if (!isConfirmed) {
+      return;
+    }
+
     setIsLoading(true);
+
     try {
       const response = await fetch(showUserApi.concat("/") + id, {
         method: "DELETE",

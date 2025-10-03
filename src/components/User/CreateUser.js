@@ -26,6 +26,17 @@ const CreateUser = () => {
     const handelSubmit = async (event) => {
         event.preventDefault();
         console.log(user)
+        // 유효성 검사 기능 추가
+        if (user.email && !user.email.includes('@')) {
+            alert("유효한 이메일 주소를 입력해주세요.");
+            return;
+        }
+
+        if (new Date(user.birthdate) > new Date()) {
+            alert("출생일은 미래 날짜일 수 없습니다.");
+            return;
+        }
+
         try {
             setIsLoading(true);
             const response = await fetch(createUserApi, {
@@ -38,10 +49,12 @@ const CreateUser = () => {
 
             if (response.ok) {
                 console.log('Form submitted successfully!');
+                alert("User created successfully!");
                 setUser({ name: "", email: "", phone: "", gender: "", birthdate: "", country: "" });
                 navigate('/show-user');
             } else {
                 console.error('Form submission failed!');
+                alert("Form submission failed!");
             }
 
         } catch (error) {
