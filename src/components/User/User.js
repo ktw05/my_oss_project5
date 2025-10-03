@@ -7,6 +7,7 @@ const EditUser = () => {
   const { id } = useParams();
   const getUserApi = "https://68db33e823ebc87faa32428a.mockapi.io/user";
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     getUser();
   }, []);
