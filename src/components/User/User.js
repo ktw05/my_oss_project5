@@ -7,7 +7,7 @@ const EditUser = () => {
   const { id } = useParams();
   const getUserApi = "https://68db33e823ebc87faa32428a.mockapi.io/user";
 
-  const getUser = () => {
+  useEffect(() => {
     axios
       .get(getUserApi.concat("/") + id)
       .then((item) => {
@@ -16,11 +16,7 @@ const EditUser = () => {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  useEffect(() => {
-    getUser();
-  }, [getUser]);
+  }, [id]);
 
   return (
     <div className="user mt-5">
