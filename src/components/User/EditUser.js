@@ -14,7 +14,7 @@ const EditUser = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     getUser();
-  }, []);
+  }, [getUser]);
 
   const getUser = () => {
     axios
