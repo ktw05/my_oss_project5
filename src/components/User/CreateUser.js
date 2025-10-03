@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loader from '../Common/Loader';
 import './User.css';
 const CreateUser = () => {
@@ -10,7 +10,10 @@ const CreateUser = () => {
     const [user, setUser] = useState({
         name: "",
         email: "",
-        phone: ""
+        phone: "",
+        gender: "",
+        birthdate: "",
+        country: ""
     })
 
     const handelInput = (event) => {
@@ -35,7 +38,7 @@ const CreateUser = () => {
 
             if (response.ok) {
                 console.log('Form submitted successfully!');
-                setUser({name: "",email: "",phone: ""})
+                setUser({ name: "", email: "", phone: "", gender: "", birthdate: "", country: "" });
                 navigate('/show-user');
             } else {
                 console.error('Form submission failed!');
@@ -43,7 +46,7 @@ const CreateUser = () => {
 
         } catch (error) {
             setError(error.message);
-        } finally{
+        } finally {
             setIsLoading(false);
         }
     }
@@ -51,22 +54,39 @@ const CreateUser = () => {
     return (
         <div className='user-form'>
             <div className='heading'>
-            {isLoading && <Loader />}
-            {error && <p>Error: {error}</p>}
+                {isLoading && <Loader />}
+                {error && <p>Error: {error}</p>}
                 <p>User Form</p>
             </div>
             <form onSubmit={handelSubmit}>
                 <div className="mb-3">
                     <label for="name" className="form-label">Name</label>
-                    <input type="text" className="form-control" id="name" name="name" value={user.name} onChange={handelInput} />
+                    <input type="text" className="form-control" id="name" name="name" value={user.name} onChange={handelInput} required aria-required="true" />
                 </div>
                 <div className="mb-3 mt-3">
                     <label for="email" className="form-label">Email</label>
-                    <input type="email" className="form-control" id="email" name="email" value={user.email} onChange={handelInput} />
+                    <input type="email" className="form-control" id="email" name="email" value={user.email} onChange={handelInput} required aria-required="true" />
                 </div>
                 <div className="mb-3">
                     <label for="pwd" className="form-label">Phone</label>
-                    <input type="text" className="form-control" id="phone" name="phone" value={user.phone} onChange={handelInput} />
+                    <input type="text" className="form-control" id="phone" name="phone" value={user.phone} onChange={handelInput} required aria-required="true" />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="gender" className="form-label">Gender</label>
+                    <select className="form-control" id="gender" name="gender" value={user.gender} onChange={handelInput} required aria-required="true">
+                        <option value="" disabled>Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="birthdate" className="form-label">Birthdate</label>
+                    <input type="date" className="form-control" id="birthdate" name="birthdate" value={user.birthdate} onChange={handelInput} required aria-required="true" />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="country" className="form-label">Country</label>
+                    <input type="text" className="form-control" id="country" name="country" value={user.country} onChange={handelInput} required aria-required="true" />
                 </div>
                 <button type="submit" className="btn btn-primary submit-btn">Submit</button>
             </form>

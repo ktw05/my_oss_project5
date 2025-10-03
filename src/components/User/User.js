@@ -25,28 +25,40 @@ const EditUser = () => {
   return (
     <div className="user mt-5">
       <table className="table table-bordered">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Name</td>
-        <td>{user.name}</td>
-      </tr>
-      <tr>
-        <td>Email</td>
-        <td>{user.email}</td>
-      </tr>
-      <tr>
-        <td>Phone</td>
-        <td>{user.phone}</td>
-      </tr>
-    </tbody>
-  </table>
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>{user.name}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{user.email}</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>{user.phone}</td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td>{user.gender}</td>
+          </tr>
+          <tr>
+            <td>Birthdate</td>
+            <td>{user.birthdate}</td>
+          </tr>
+          <tr>
+            <td>Country</td>
+            <td>{user.country}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };

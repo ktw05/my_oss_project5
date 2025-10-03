@@ -62,8 +62,8 @@ const EditUser = () => {
   return (
     <div className="user-form">
       <div className="heading">
-      {isLoading && <Loader />}
-      {error && <p>Error: {error}</p>}
+        {isLoading && <Loader />}
+        {error && <p>Error: {error}</p>}
         <p>Edit Form</p>
       </div>
       <form onSubmit={handelSubmit}>
@@ -103,6 +103,46 @@ const EditUser = () => {
             id="phone"
             name="phone"
             value={user.phone}
+            onChange={handelInput}
+          />
+        </div>
+        {/* gender, birthdate, country 추가 */}
+        <div className="mb-3">
+          <label For="gender" className="form-label">Gender</label>
+          <select
+            className="form-control"
+            id="gender"
+            name="gender"
+            value={user.gender || ''}
+            onChange={handelInput}
+          >
+            <option value="" disabled>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div className="mb-3">
+          <label For="birthdate" className="form-label">Birthdate</label>
+          <input
+            type="date"
+            className="form-control"
+            id="birthdate"
+            name="birthdate"
+            value={user.birthdate || ''}
+            onChange={handelInput}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label For="country" className="form-label">Country</label>
+          <input
+            type="text"
+            className="form-control"
+            id="country"
+            name="country"
+            value={user.country || ''}
             onChange={handelInput}
           />
         </div>

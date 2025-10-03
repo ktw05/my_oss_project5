@@ -57,6 +57,9 @@ const ShowUser = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
+              <th>Gender</th>
+              <th>Birthdate</th>
+              <th>Country</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -68,6 +71,9 @@ const ShowUser = () => {
                   <td>{item.name}</td>
                   <td>{item.email}</td>
                   <td>{item.phone}</td>
+                  <td>{item.gender}</td>
+                  <td>{item.birthdate}</td>
+                  <td>{item.country}</td>
                   <td>
                     <Link to={`/edit-user/${item.id}`}>
                       <i className="fa fa-pencil" aria-hidden="true"></i>
